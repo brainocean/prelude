@@ -1,3 +1,6 @@
+;; make cursor blink
+(blink-cursor-mode 1)
+
 ;; show relative line number only
 (require 'nlinum-relative)
 (nlinum-relative-setup-evil)                    ;; setup for evil
@@ -6,12 +9,16 @@
 (setq nlinum-relative-current-symbol "->")      ;; or "" for display current line number
 (setq nlinum-relative-offset 0)                 ;; 1 if you want 0, 2, 3...
 
-
+;; set indents to 2
 (setq-default indent-tabs-mode nil)
 (setq-default tab-width 2)
 (setq tab-width 2)
 (setq js-indent-level 2)
 (setq-default js2-basic-offset 2)
+
+;; folding configuration
+(add-hook 'prog-mode-hook 'origami-mode)
+(add-hook 'lsp-after-open-hook #'lsp-origami-try-enable)
 
 ;; config tide for typescript dev
 (setq-default typescript-indent-level 2)
